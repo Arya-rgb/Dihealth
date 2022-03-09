@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "786861378079",
+    "project_id": "dihealth-2911a",
+    "storage_bucket": "dihealth-2911a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:786861378079:android:1f9b2227a9da9db323e32a",
+        "android_client_info": {
+          "package_name": "com.thorin.dsc.dihealth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "786861378079-3ptdclqvdsfotk0d3g2aq57pr7i3mqps.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTT0VoR2aKT2X-Scb1wQY4GjtGCkmXBCQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "786861378079-3ptdclqvdsfotk0d3g2aq57pr7i3mqps.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
