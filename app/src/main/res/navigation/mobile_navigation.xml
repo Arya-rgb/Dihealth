@@ -22,4 +22,11 @@
         android:name="com.thorin.dsc.dihealth.ui.navigation.chat.ChatFragment"
         android:label="Chat"
         tools:layout="@layout/fragment_chat" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.thorin.dsc.dihealth.ui.navigation.profil.ProfilFragment"
+        android:label="Chat"
+        tools:layout="@layout/fragment_profil" />
+
 </navigation>
