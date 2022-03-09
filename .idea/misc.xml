@@ -3,6 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/dicky/AndroidStudioProjects/DscSolutionSpeedrun/Dihealth/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/Users/dicky/AndroidStudioProjects/DscSolutionSpeedrun/Dihealth/app/src/main/res/layout/activity_login_email.xml" value="0.1956521739130435" />
+        <entry key="..\:/Users/dicky/AndroidStudioProjects/DscSolutionSpeedrun/Dihealth/app/src/main/res/layout/activity_register.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/dicky/AndroidStudioProjects/DscSolutionSpeedrun/Dihealth/app/src/main/res/layout/activity_splash.xml" value="0.1956521739130435" />
+        <entry key="..\:/Users/dicky/AndroidStudioProjects/DscSolutionSpeedrun/Dihealth/app/src/main/res/layout/activity_splash_screen.xml" value="0.1956521739130435" />
+        <entry key="..\:/Users/dicky/AndroidStudioProjects/DscSolutionSpeedrun/Dihealth/app/src/main/res/layout/fragment_forum.xml" value="0.1956521739130435" />
+        <entry key="..\:/Users/dicky/AndroidStudioProjects/DscSolutionSpeedrun/Dihealth/app/src/main/res/menu/bottom_nav_menu.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/dicky/AndroidStudioProjects/DscSolutionSpeedrun/app/src/main/res/drawable/oval_button.xml" value="0.2085" />
         <entry key="..\:/Users/dicky/AndroidStudioProjects/DscSolutionSpeedrun/app/src/main/res/layout/activity_home.xml" value="0.1956521739130435" />
         <entry key="..\:/Users/dicky/AndroidStudioProjects/DscSolutionSpeedrun/app/src/main/res/layout/activity_login.xml" value="0.33" />
