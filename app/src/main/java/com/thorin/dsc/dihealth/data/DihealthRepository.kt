@@ -18,13 +18,14 @@ class DihealthRepository private constructor(private val remoteDataSource: Remot
     }
 
     override fun getUploadDataUser(
+        photoUrl: String,
         uid: String,
         nama: String,
         email: String
     ): LiveData<UserDataResponse> {
         val userDataResult = MutableLiveData<UserDataResponse>()
 
-        remoteDataSource.getUploadDataUser(uid, nama, email, object : RemoteDataSource.LoadDataUserCallback {
+        remoteDataSource.getUploadDataUser(photoUrl, uid, nama, email, object : RemoteDataSource.LoadDataUserCallback {
             override fun onDataUserReceived(userDataResponse: UserDataResponse) {
                 userDataResult.postValue(userDataResponse)
             }
@@ -32,6 +33,20 @@ class DihealthRepository private constructor(private val remoteDataSource: Remot
         })
 
         return userDataResult
+
+    }
+
+    override fun getDataProfileUser(): LiveData<UserDataResponse> {
+        val userProfileResult = MutableLiveData<UserDataResponse>()
+
+        remoteDataSource.getDataUser(object : RemoteDataSource.LoadDataProfileCallback{
+            override fun onDataProfileReceived(userDataResponse: UserDataResponse) {
+                userProfileResult.postValue(userDataResponse)
+            }
+
+        })
+
+        return userProfileResult
 
     }
 

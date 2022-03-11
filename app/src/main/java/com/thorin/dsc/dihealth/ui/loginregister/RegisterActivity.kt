@@ -2,17 +2,22 @@ package com.thorin.dsc.dihealth.ui.loginregister
 
 import android.annotation.SuppressLint
 import android.app.ProgressDialog
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.jakewharton.rxbinding2.widget.RxTextView
 import com.thorin.dsc.dihealth.R
 import com.thorin.dsc.dihealth.databinding.ActivityRegisterBinding
+import com.thorin.dsc.dihealth.ui.editprofile.EditProfileViewModel
 import com.thorin.dsc.dihealth.ui.mainpage.HomeActivity
+import com.thorin.dsc.dihealth.viewmodel.viewmodelfactory.ViewModelFactory
 import io.reactivex.Observable
 
 
@@ -34,6 +39,16 @@ class RegisterActivity : AppCompatActivity() {
         binding.btnDaftar.setBackgroundColor(ContextCompat.getColor(this, android.R.color.darker_gray))
 
         title = "Register"
+
+        val nameStream = RxTextView.textChanges(binding.idName)
+            .skipInitialValue()
+            .map { name ->
+                name.isEmpty()
+            }
+
+        nameStream.subscribe {
+            showNameAlert(it)
+        }
 
         val emailStream = RxTextView.textChanges(binding.idEmail)
             .skipInitialValue()
@@ -70,11 +85,12 @@ class RegisterActivity : AppCompatActivity() {
 
 
         val invalidFieldsStream = Observable.combineLatest(
+            nameStream,
             emailStream,
             passwordStream,
             passwordConfirmationStream
-        ) { emailInvalid: Boolean, passwordInvalid: Boolean, passwordConfirmationInvalid: Boolean ->
-            !emailInvalid && !passwordInvalid && !passwordConfirmationInvalid
+        ) {nameInvalid:Boolean, emailInvalid: Boolean, passwordInvalid: Boolean, passwordConfirmationInvalid: Boolean ->
+            !nameInvalid && !emailInvalid && !passwordInvalid && !passwordConfirmationInvalid
         }
         invalidFieldsStream.subscribe { isValid ->
             if (isValid) {
@@ -104,6 +120,29 @@ class RegisterActivity : AppCompatActivity() {
         )
             .addOnSuccessListener {
                 progressdialog.dismiss()
+
+                //Up Data User
+                val factory = ViewModelFactory.getInstance(this)
+                val viewModel = ViewModelProvider(this, factory)[EditProfileViewModel::class.java]
+                val mAuth: FirebaseAuth = FirebaseAuth.getInstance()
+
+                viewModel.uploadDataUser(
+                    "https://i.ibb.co/S6cG64t/image-profile-default.png",
+                    mAuth.currentUser?.uid.toString(),
+                    binding.idName.text.toString(),
+                    mAuth.currentUser?.email.toString()
+                ).observe(this) { data ->
+
+                    val prefPreTest2: SharedPreferences =
+                        this.getSharedPreferences("data_user_local", Context.MODE_PRIVATE)
+                    val edit = prefPreTest2.edit()
+                    edit?.putString("name", data.nama)
+                    edit?.putString("email", data.email)
+                    edit?.putString("photo_url", "https://i.ibb.co/S6cG64t/image-profile-default.png")
+                    edit?.apply()
+
+                }
+
                 val email = ref.currentUser?.email
                 Toast.makeText(this, "Register Successfully With Email  $email", Toast.LENGTH_SHORT)
                     .show()
@@ -119,6 +158,10 @@ class RegisterActivity : AppCompatActivity() {
                 )
                     .show()
             }
+    }
+
+    private fun showNameAlert(isNotValid: Boolean) {
+        binding.idName.error = if (isNotValid) getString(R.string.name_empty) else null
     }
 
     private fun showEmailExistAlert(isNotValid: Boolean) {

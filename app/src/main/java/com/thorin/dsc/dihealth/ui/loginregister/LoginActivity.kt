@@ -1,10 +1,13 @@
 package com.thorin.dsc.dihealth.ui.loginregister
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -13,7 +16,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.thorin.dsc.dihealth.R
 import com.thorin.dsc.dihealth.databinding.ActivityLoginBinding
+import com.thorin.dsc.dihealth.ui.editprofile.EditProfileViewModel
 import com.thorin.dsc.dihealth.ui.mainpage.HomeActivity
+import com.thorin.dsc.dihealth.viewmodel.viewmodelfactory.ViewModelFactory
 
 @Suppress("DEPRECATION")
 class LoginActivity : AppCompatActivity() {
@@ -90,7 +95,28 @@ class LoginActivity : AppCompatActivity() {
         mAuth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    Log.d("Sign in Activity", "SignInWithCredential:success")
+
+
+                    val factory = ViewModelFactory.getInstance(this)
+                    val viewModel =
+                        ViewModelProvider(this, factory)[EditProfileViewModel::class.java]
+
+                    viewModel.uploadDataUser(
+                        mAuth.currentUser?.photoUrl.toString(),
+                        mAuth.currentUser?.uid.toString(),
+                        mAuth.currentUser?.displayName.toString(),
+                        mAuth.currentUser?.email.toString()
+                    ).observe(this) { data ->
+
+                        val prefPreTest2: SharedPreferences =
+                            this.getSharedPreferences("data_user_local", Context.MODE_PRIVATE)
+                        val edit = prefPreTest2.edit()
+                        edit?.putString("photo_url", data.photoUrl)
+                        edit?.putString("name", data.nama)
+                        edit?.putString("email", data.email)
+                        edit?.apply()
+
+                    }
 
                     binding.animationView.visibility = View.GONE
                     val intent = Intent(this, HomeActivity::class.java)

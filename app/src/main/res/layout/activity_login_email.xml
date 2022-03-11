@@ -57,11 +57,11 @@
 
 
     <Button
-        android:id="@+id/btn_daftar"
+        android:id="@+id/btn_loginr"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="@string/register"
+        android:text="@string/login"
         android:textAlignment="textStart"
         android:drawableEnd="@drawable/ic_baseline_how_to_reg_24"/>
 

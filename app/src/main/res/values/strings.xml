@@ -24,4 +24,8 @@
     <string name="profile">Profile</string>
     <string name="background_image">background image</string>
     <string name="enter_your_name">Enter Your Name</string>
+    <string name="your_name">Your Name</string>
+    <string name="name_empty">Name Must Not Be Empty</string>
+    <string name="login">Login</string>
+    <string name="apply_edit">Apply Edit</string>
 </resources>

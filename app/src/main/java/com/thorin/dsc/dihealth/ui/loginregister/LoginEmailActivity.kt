@@ -2,7 +2,9 @@ package com.thorin.dsc.dihealth.ui.loginregister
 
 import android.annotation.SuppressLint
 import android.app.ProgressDialog
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
@@ -20,7 +22,7 @@ class LoginEmailActivity : AppCompatActivity() {
     private var _binding: ActivityLoginEmailBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var mAuth: FirebaseAuth
+    private val mAuth: FirebaseAuth = FirebaseAuth.getInstance()
 
     @SuppressLint("CheckResult")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,8 +31,8 @@ class LoginEmailActivity : AppCompatActivity() {
         _binding = ActivityLoginEmailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnDaftar.isEnabled = false
-        binding.btnDaftar.setBackgroundColor(
+        binding.btnLoginr.isEnabled = false
+        binding.btnLoginr.setBackgroundColor(
             ContextCompat.getColor(
                 this,
                 android.R.color.darker_gray
@@ -68,16 +70,16 @@ class LoginEmailActivity : AppCompatActivity() {
         }
         invalidFieldsStream.subscribe { isValid ->
             if (isValid) {
-                binding.btnDaftar.isEnabled = true
-                binding.btnDaftar.setBackgroundColor(
+                binding.btnLoginr.isEnabled = true
+                binding.btnLoginr.setBackgroundColor(
                     ContextCompat.getColor(
                         this,
                         R.color.purple_500
                     )
                 )
             } else {
-                binding.btnDaftar.isEnabled = false
-                binding.btnDaftar.setBackgroundColor(
+                binding.btnLoginr.isEnabled = false
+                binding.btnLoginr.setBackgroundColor(
                     ContextCompat.getColor(
                         this,
                         android.R.color.darker_gray
@@ -86,7 +88,9 @@ class LoginEmailActivity : AppCompatActivity() {
             }
         }
 
-        loginWithEmail()
+        binding.btnLoginr.setOnClickListener {
+            loginWithEmail()
+        }
 
     }
 
@@ -102,6 +106,15 @@ class LoginEmailActivity : AppCompatActivity() {
         )
             .addOnSuccessListener {
                 progressdialog.dismiss()
+
+                val prefPreTest2: SharedPreferences =
+                    this.getSharedPreferences("data_user_local", Context.MODE_PRIVATE)
+                val edit = prefPreTest2.edit()
+                edit?.putString("photo_url", "https://i.ibb.co/S6cG64t/image-profile-default.png")
+                edit?.putString("name", binding.idEmail.text.toString().trim())
+                edit?.putString("email", binding.idPassword.text.toString().trim())
+                edit?.apply()
+
                 Intent(this, HomeActivity::class.java).also {
                     startActivity(it)
                     finish()
