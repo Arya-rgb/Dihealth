@@ -9,5 +9,4 @@ data class UserDataResponse(
     var uid: String? = "",
     var nama: String? = "",
     var email: String? = ""
-
 ): Parcelable

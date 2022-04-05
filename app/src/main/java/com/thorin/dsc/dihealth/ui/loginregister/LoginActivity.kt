@@ -96,7 +96,6 @@ class LoginActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
 
-
                     val factory = ViewModelFactory.getInstance(this)
                     val viewModel =
                         ViewModelProvider(this, factory)[EditProfileViewModel::class.java]
@@ -111,9 +110,9 @@ class LoginActivity : AppCompatActivity() {
                         val prefPreTest2: SharedPreferences =
                             this.getSharedPreferences("data_user_local", Context.MODE_PRIVATE)
                         val edit = prefPreTest2.edit()
-                        edit?.putString("photo_url", data.photoUrl)
-                        edit?.putString("name", data.nama)
-                        edit?.putString("email", data.email)
+                        edit?.putString("photo_url", mAuth.currentUser?.photoUrl.toString())
+                        edit?.putString("name", mAuth.currentUser?.displayName.toString())
+                        edit?.putString("email", mAuth.currentUser?.email.toString())
                         edit?.apply()
 
                     }
@@ -130,7 +129,6 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
     }
-
 
     companion object {
         private const val RC_SIGN_IN = 120

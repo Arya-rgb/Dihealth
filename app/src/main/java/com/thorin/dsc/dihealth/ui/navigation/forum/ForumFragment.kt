@@ -4,10 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.thorin.dsc.dihealth.data.source.remote.response.UserPostResponse
 import com.thorin.dsc.dihealth.databinding.FragmentForumBinding
+import com.thorin.dsc.dihealth.ui.editprofile.EditProfileViewModel
+import com.thorin.dsc.dihealth.viewmodel.viewmodelfactory.ViewModelFactory
 
 
 class ForumFragment : Fragment() {
@@ -23,17 +26,41 @@ class ForumFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val dashboardViewModel =
-            ViewModelProvider(this).get(ForumViewModel::class.java)
-
         _binding = FragmentForumBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
-        val textView: TextView = binding.textDashboard
-        dashboardViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        val factory = ViewModelFactory.getInstance(requireContext())
+        val viewModel = ViewModelProvider(this, factory)[ForumViewModel::class.java]
+
+        val postForumAdapter = ForumListAdapter()
+
+        binding.idEdit.setOnClickListener {
+            AddPostItemDialog(requireContext(), object : AddPostListener {
+                override fun onAddButtonClicked(item: UserPostResponse) {
+                    viewModel.getDataUploadPost(
+                        item.photoUrl.toString(),
+                        item.uid.toString(),
+                        item.nama.toString(),
+                        item.email.toString(),
+                        item.post.toString()
+                    )
+                }
+            }).show()
         }
-        return root
+
+        viewModel.getPostData().observe(viewLifecycleOwner) { data ->
+            if (data != null) {
+                postForumAdapter.setDataPost(data)
+                postForumAdapter.notifyDataSetChanged()
+            }
+        }
+
+        with(binding.postRv) {
+            this.layoutManager = LinearLayoutManager(context)
+            this.setHasFixedSize(true)
+            this.adapter = postForumAdapter
+        }
+
+        return binding.root
     }
 
     override fun onDestroyView() {

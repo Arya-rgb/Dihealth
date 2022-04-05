@@ -12,6 +12,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Dihealth">
         <activity
+            android:name=".ui.navigation.home.detail.NewsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.navigation.chat.ChatRoomActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.navigation.home.detail.DetailArticleActivity"
+            android:exported="true"
+            android:label="@string/title_activity_detail_article"
+            android:theme="@style/Theme.Dihealth.NoActionBar" />
+        <activity
+            android:name=".ui.navigation.chat.ListUserActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.editprofile.EditProfileActivity"
             android:exported="false" />
         <activity

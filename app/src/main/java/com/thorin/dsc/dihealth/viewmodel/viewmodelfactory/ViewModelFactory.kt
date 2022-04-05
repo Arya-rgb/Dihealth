@@ -6,6 +6,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.thorin.dsc.dihealth.data.DihealthRepository
 import com.thorin.dsc.dihealth.di.Injection
 import com.thorin.dsc.dihealth.ui.editprofile.EditProfileViewModel
+import com.thorin.dsc.dihealth.ui.navigation.chat.ChatViewModel
+import com.thorin.dsc.dihealth.ui.navigation.forum.ForumViewModel
+import com.thorin.dsc.dihealth.ui.navigation.home.HomeViewModel
 import com.thorin.dsc.dihealth.ui.navigation.profil.ProfilViewModel
 
 @Suppress("UNCHECKED_CAST")
@@ -30,6 +33,15 @@ class ViewModelFactory private constructor(private val mDihealthRepository: Dihe
             }
             modelClass.isAssignableFrom(ProfilViewModel::class.java) -> {
                 ProfilViewModel(mDihealthRepository) as T
+            }
+            modelClass.isAssignableFrom(ForumViewModel::class.java) -> {
+                ForumViewModel(mDihealthRepository) as T
+            }
+            modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
+                HomeViewModel(mDihealthRepository) as T
+            }
+            modelClass.isAssignableFrom(ChatViewModel::class.java) -> {
+                ChatViewModel(mDihealthRepository) as T
             }
             else -> throw Throwable("Unknown ViewModel class : "+modelClass.name)
         }

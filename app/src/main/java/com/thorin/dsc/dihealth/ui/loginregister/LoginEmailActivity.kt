@@ -106,15 +106,6 @@ class LoginEmailActivity : AppCompatActivity() {
         )
             .addOnSuccessListener {
                 progressdialog.dismiss()
-
-                val prefPreTest2: SharedPreferences =
-                    this.getSharedPreferences("data_user_local", Context.MODE_PRIVATE)
-                val edit = prefPreTest2.edit()
-                edit?.putString("photo_url", "https://i.ibb.co/S6cG64t/image-profile-default.png")
-                edit?.putString("name", binding.idEmail.text.toString().trim())
-                edit?.putString("email", binding.idPassword.text.toString().trim())
-                edit?.apply()
-
                 Intent(this, HomeActivity::class.java).also {
                     startActivity(it)
                     finish()

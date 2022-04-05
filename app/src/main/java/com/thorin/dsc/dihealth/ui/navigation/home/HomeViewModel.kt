@@ -3,11 +3,15 @@ package com.thorin.dsc.dihealth.ui.navigation.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.thorin.dsc.dihealth.data.DihealthRepository
+import com.thorin.dsc.dihealth.data.source.remote.response.ArtikelResponse
+import com.thorin.dsc.dihealth.data.source.remote.response.GetUserPostResponse
+import com.thorin.dsc.dihealth.data.source.remote.response.QuotesResponse
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(private val dihealthRepository: DihealthRepository) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
-    }
-    val text: LiveData<String> = _text
+    fun getArticleData(): LiveData<List<ArtikelResponse>> = dihealthRepository.getDataArticle()
+
+    fun getQuotes(): LiveData<QuotesResponse> = dihealthRepository.getQuotesData()
+
 }

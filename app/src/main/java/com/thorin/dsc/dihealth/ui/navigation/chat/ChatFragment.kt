@@ -1,5 +1,6 @@
 package com.thorin.dsc.dihealth.ui.navigation.chat
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.thorin.dsc.dihealth.databinding.FragmentChatBinding
+import com.thorin.dsc.dihealth.viewmodel.viewmodelfactory.ViewModelFactory
 
 class ChatFragment : Fragment() {
 
@@ -22,17 +24,21 @@ class ChatFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val notificationsViewModel =
-            ViewModelProvider(this).get(ChatViewModel::class.java)
-
         _binding = FragmentChatBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
-        val textView: TextView = binding.textNotifications
-        notificationsViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+
+        val factory = ViewModelFactory.getInstance(requireContext())
+        val viewModel =
+            ViewModelProvider(this, factory)[ChatViewModel::class.java]
+
+        //coming soon
+
+        binding.floatingActionButton.setOnClickListener {
+            Intent(requireContext(), ListUserActivity::class.java).also {
+                startActivity(it)
+            }
         }
-        return root
+        return binding.root
     }
 
     override fun onDestroyView() {

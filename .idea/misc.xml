@@ -3,14 +3,35 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/dicky/AndroidStudioProjects/DscSolutionSpeedrun/Dihealth/app/src/main/res/drawable/bg_white_rounded.xml" value="0.172" />
+        <entry key="..\:/Users/dicky/AndroidStudioProjects/DscSolutionSpeedrun/Dihealth/app/src/main/res/drawable/btn_grey.xml" value="0.172" />
+        <entry key="..\:/Users/dicky/AndroidStudioProjects/DscSolutionSpeedrun/Dihealth/app/src/main/res/drawable/item_slide_home.xml" value="0.172" />
+        <entry key="..\:/Users/dicky/AndroidStudioProjects/DscSolutionSpeedrun/Dihealth/app/src/main/res/drawable/oval_button.xml" value="0.172" />
+        <entry key="..\:/Users/dicky/AndroidStudioProjects/DscSolutionSpeedrun/Dihealth/app/src/main/res/drawable/shape_bg_incoming_bubble.xml" value="0.172" />
+        <entry key="..\:/Users/dicky/AndroidStudioProjects/DscSolutionSpeedrun/Dihealth/app/src/main/res/drawable/shape_bg_outgoing_bubble.xml" value="0.172" />
+        <entry key="..\:/Users/dicky/AndroidStudioProjects/DscSolutionSpeedrun/Dihealth/app/src/main/res/layout/activity_chat_room.xml" value="0.33" />
+        <entry key="..\:/Users/dicky/AndroidStudioProjects/DscSolutionSpeedrun/Dihealth/app/src/main/res/layout/activity_detail_article.xml" value="0.25" />
         <entry key="..\:/Users/dicky/AndroidStudioProjects/DscSolutionSpeedrun/Dihealth/app/src/main/res/layout/activity_edit_profile.xml" value="0.1956521739130435" />
+        <entry key="..\:/Users/dicky/AndroidStudioProjects/DscSolutionSpeedrun/Dihealth/app/src/main/res/layout/activity_home.xml" value="0.25" />
+        <entry key="..\:/Users/dicky/AndroidStudioProjects/DscSolutionSpeedrun/Dihealth/app/src/main/res/layout/activity_list_user.xml" value="0.25" />
         <entry key="..\:/Users/dicky/AndroidStudioProjects/DscSolutionSpeedrun/Dihealth/app/src/main/res/layout/activity_login.xml" value="0.25" />
-        <entry key="..\:/Users/dicky/AndroidStudioProjects/DscSolutionSpeedrun/Dihealth/app/src/main/res/layout/activity_login_email.xml" value="0.1956521739130435" />
+        <entry key="..\:/Users/dicky/AndroidStudioProjects/DscSolutionSpeedrun/Dihealth/app/src/main/res/layout/activity_login_email.xml" value="0.14507772020725387" />
+        <entry key="..\:/Users/dicky/AndroidStudioProjects/DscSolutionSpeedrun/Dihealth/app/src/main/res/layout/activity_main.xml" value="0.171875" />
+        <entry key="..\:/Users/dicky/AndroidStudioProjects/DscSolutionSpeedrun/Dihealth/app/src/main/res/layout/activity_news.xml" value="0.21603260869565216" />
         <entry key="..\:/Users/dicky/AndroidStudioProjects/DscSolutionSpeedrun/Dihealth/app/src/main/res/layout/activity_register.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/dicky/AndroidStudioProjects/DscSolutionSpeedrun/Dihealth/app/src/main/res/layout/activity_splash.xml" value="0.1956521739130435" />
         <entry key="..\:/Users/dicky/AndroidStudioProjects/DscSolutionSpeedrun/Dihealth/app/src/main/res/layout/activity_splash_screen.xml" value="0.1956521739130435" />
-        <entry key="..\:/Users/dicky/AndroidStudioProjects/DscSolutionSpeedrun/Dihealth/app/src/main/res/layout/fragment_forum.xml" value="0.1956521739130435" />
+        <entry key="..\:/Users/dicky/AndroidStudioProjects/DscSolutionSpeedrun/Dihealth/app/src/main/res/layout/chat_item.xml" value="0.266384778012685" />
+        <entry key="..\:/Users/dicky/AndroidStudioProjects/DscSolutionSpeedrun/Dihealth/app/src/main/res/layout/content_scrolling.xml" value="0.17527173913043478" />
+        <entry key="..\:/Users/dicky/AndroidStudioProjects/DscSolutionSpeedrun/Dihealth/app/src/main/res/layout/dialog_add_post.xml" value="0.25" />
+        <entry key="..\:/Users/dicky/AndroidStudioProjects/DscSolutionSpeedrun/Dihealth/app/src/main/res/layout/fragment_chat.xml" value="0.22" />
+        <entry key="..\:/Users/dicky/AndroidStudioProjects/DscSolutionSpeedrun/Dihealth/app/src/main/res/layout/fragment_forum.xml" value="0.22" />
+        <entry key="..\:/Users/dicky/AndroidStudioProjects/DscSolutionSpeedrun/Dihealth/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/Users/dicky/AndroidStudioProjects/DscSolutionSpeedrun/Dihealth/app/src/main/res/layout/fragment_profil.xml" value="0.1956521739130435" />
+        <entry key="..\:/Users/dicky/AndroidStudioProjects/DscSolutionSpeedrun/Dihealth/app/src/main/res/layout/item_forum.xml" value="0.5" />
+        <entry key="..\:/Users/dicky/AndroidStudioProjects/DscSolutionSpeedrun/Dihealth/app/src/main/res/layout/item_list_user.xml" value="0.33" />
+        <entry key="..\:/Users/dicky/AndroidStudioProjects/DscSolutionSpeedrun/Dihealth/app/src/main/res/layout/item_slide_home.xml" value="0.171875" />
+        <entry key="..\:/Users/dicky/AndroidStudioProjects/DscSolutionSpeedrun/Dihealth/app/src/main/res/layout/news_item.xml" value="0.21603260869565216" />
         <entry key="..\:/Users/dicky/AndroidStudioProjects/DscSolutionSpeedrun/Dihealth/app/src/main/res/menu/bottom_nav_menu.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/dicky/AndroidStudioProjects/DscSolutionSpeedrun/app/src/main/res/drawable/oval_button.xml" value="0.2085" />
         <entry key="..\:/Users/dicky/AndroidStudioProjects/DscSolutionSpeedrun/app/src/main/res/layout/activity_home.xml" value="0.1956521739130435" />
@@ -26,5 +47,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.33" />
+      </ProjectState>
+    </option>
   </component>
 </project>

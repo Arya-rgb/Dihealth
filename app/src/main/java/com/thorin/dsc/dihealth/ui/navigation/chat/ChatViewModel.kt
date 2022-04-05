@@ -1,13 +1,29 @@
 package com.thorin.dsc.dihealth.ui.navigation.chat
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.thorin.dsc.dihealth.data.DihealthRepository
+import com.thorin.dsc.dihealth.data.source.remote.response.ChatResponse
+import com.thorin.dsc.dihealth.data.source.remote.response.ListUserResponse
+import com.thorin.dsc.dihealth.data.source.remote.response.MessageListResponse
 
-class ChatViewModel : ViewModel() {
+class ChatViewModel(private val dihealthRepository: DihealthRepository) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is chat Fragment"
-    }
-    val text: LiveData<String> = _text
+    fun getListUser(): LiveData<List<ListUserResponse>> = dihealthRepository.getListUser()
+
+    fun uploadChat(
+        message: String,
+        profileUrl: String,
+        chatId: String,
+        username: String,
+        uid: String
+    ): LiveData<ChatResponse> =
+        dihealthRepository.uploadDataChat(message, profileUrl, chatId, username, uid)
+
+    fun getListMessage(chatId: String): LiveData<List<MessageListResponse>> =
+        dihealthRepository.getListMessage(chatId)
+
+    fun getUserMessage(chatId: String, query: String): LiveData<List<MessageListResponse>> =
+        dihealthRepository.getUserMessage(chatId, query)
+
 }

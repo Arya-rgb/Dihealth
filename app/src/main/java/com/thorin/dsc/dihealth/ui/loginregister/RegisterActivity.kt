@@ -136,8 +136,8 @@ class RegisterActivity : AppCompatActivity() {
                     val prefPreTest2: SharedPreferences =
                         this.getSharedPreferences("data_user_local", Context.MODE_PRIVATE)
                     val edit = prefPreTest2.edit()
-                    edit?.putString("name", data.nama)
-                    edit?.putString("email", data.email)
+                    edit?.putString("name", binding.idName.text.toString())
+                    edit?.putString("email", mAuth.currentUser?.email.toString())
                     edit?.putString("photo_url", "https://i.ibb.co/S6cG64t/image-profile-default.png")
                     edit?.apply()
 

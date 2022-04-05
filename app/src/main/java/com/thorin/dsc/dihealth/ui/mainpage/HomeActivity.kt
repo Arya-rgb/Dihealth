@@ -35,13 +35,11 @@ class HomeActivity : AppCompatActivity() {
             this.getSharedPreferences("data_user_local", Context.MODE_PRIVATE)
 
         viewModel.getDataUser().observe(this) { data ->
-            if (data.nama != dataUserSharedPref?.getString("name", null)) {
                 val edit = dataUserSharedPref?.edit()
                 edit?.putString("photo_url", data.photoUrl)
                 edit?.putString("name", data.nama)
                 edit?.putString("email", data.email)
                 edit?.apply()
-            }
         }
 
         val navView: BottomNavigationView = binding.navView
